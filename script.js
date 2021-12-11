@@ -49,7 +49,8 @@ function clickButton() {
   // console.log(this);
   console.log(equationArray)
   var add = +equationArray[0] + +equationArray[1];
-  console.log(add);
+  calcDisplay.append(+equationArray[0] + +equationArray[1]);
+  console.log(equationArray[0] + "+" + equationArray[1] + "=" + add);
 }
 
 
