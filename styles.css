@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(223, 223, 223);
+}
+
 #calcLayout {
   background-color: rgb(187, 187, 206);
   width: 157px;

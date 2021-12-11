@@ -21,7 +21,35 @@ const btn_memAdd = document.getElementById("memAdd");
 const btn_memSubtract = document.getElementById("memSubtract");
 const btn_memRecall = document.getElementById("memRecall");
 
-btn_seven.addEventListener("click", event => {
-  calcDisplay.append(btn_seven.value);
+
+
+btn_one.addEventListener("click", event => {
+  calcDisplay.append(btn_one.value);
+  equationArray.push(btn_one.value);
 })
+
+btn_two.addEventListener("click", event => {
+  calcDisplay.append(btn_two.value);
+  equationArray.push(btn_two.value);
+})
+
+btn_add.addEventListener("click", event => {
+  calcDisplay.append(btn_add.value);
+})
+
+
+
+var equationArray = [];
+
+btn_equals.addEventListener("click", event => {
+  clickButton();
+})
+
+function clickButton() {
+  // console.log(this);
+  console.log(equationArray)
+  var add = +equationArray[0] + +equationArray[1];
+  console.log(add);
+}
+
 
