@@ -9,6 +9,7 @@ body {
   margin: 0 auto;
   border: solid black 3px;
   border-radius: 5%;
+  box-shadow: 2px 2px rgb(94, 94, 94);
 }
 
 #calcDisplay {
