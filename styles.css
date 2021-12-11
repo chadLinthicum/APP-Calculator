@@ -1,3 +1,19 @@
+#calcLayout {
+  background-color: rgb(187, 187, 206);
+  width: 142px;
+  height: 146px;
+  margin: 0 auto;
+  border: solid black 2px;
+  border-radius: 5%;
+}
+
+.calcDisplay {
+  background-color: rgb(204, 163, 73);
+  width: 142px;
+  height: 35px;
+  border-radius:15%;  
+}
+
 .calcButtons {
   /* border: 5px solid #ffcc5c; */
   display: flex;
@@ -6,17 +22,9 @@
   padding: 1px;  
 }
 
-#calcLayout {
-  background-color: rgb(187, 187, 206);
-  width: 142px;
-  height: 146px;
-  margin: 0 auto;
-  border: solid black 2px
-}
-
 button {
   width: 35px;
   border-radius: 35%;
   border-width: 1px;
-  
+  box-shadow: 1px 1px;
 }
