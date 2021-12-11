@@ -1,17 +1,18 @@
 #calcLayout {
   background-color: rgb(187, 187, 206);
   width: 157px;
-  height: 162px;
+  height: 145px;
   margin: 0 auto;
   border: solid black 3px;
   border-radius: 5%;
 }
 
-.calcDisplay {
+#calcDisplay {
   background-color: rgb(204, 163, 73);
   width: 154px;
-  height: 35px;
+  height: 17px;
   border: solid black 2px; 
+  text-align:right;
 }
 
 .calcButtons {
