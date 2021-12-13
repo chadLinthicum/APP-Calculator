@@ -1,15 +1,5 @@
 let calcDisplay = document.getElementById("calcDisplay");
 
-const btn_zero = document.getElementById("0");
-const btn_one = document.getElementById("1");
-const btn_two = document.getElementById("2");
-const btn_three = document.getElementById("3");
-const btn_four = document.getElementById("4");
-const btn_five = document.getElementById("5");
-const btn_six = document.getElementById("6");
-const btn_seven = document.getElementById("7");
-const btn_eight = document.getElementById("8");
-const btn_nine = document.getElementById("9");
 const btn_add = document.getElementById("add");
 const btn_subtract = document.getElementById("subtract");
 const btn_multiply = document.getElementById("multiply");
@@ -21,36 +11,70 @@ const btn_memAdd = document.getElementById("memAdd");
 const btn_memSubtract = document.getElementById("memSubtract");
 const btn_memRecall = document.getElementById("memRecall");
 
+var firstNumberSelected = false;
+var num1;
+var num2;
 
-
-btn_one.addEventListener("click", event => {
-  calcDisplay.append(btn_one.value);
-  equationArray.push(btn_one.value);
+document.addEventListener('click', function (e){
+  if(e.target.className=="numButtons"){ // get buttons values
+    calcDisplay.append(e.target.value);
+  }
 })
 
-btn_two.addEventListener("click", event => {
-  calcDisplay.append(btn_two.value);
-  equationArray.push(btn_two.value);
+document.addEventListener('click', function(e){
+  if(e.target.className=="operatorButtons"){
+    if(e.target.value == "+") {
+      firstNumberSelected = true;
+      num1 = calcDisplay.innerText;
+      console.log(calcDisplay.innerText);
+      calcDisplay.innerText = ""; 
+      console.log(firstNumberSelected);
+    }
+    else if(e.target.value == "-") {
+      console.log("hey1");
+    }
+    else if(e.target.value == "*") {
+      console.log("hey2");
+    }
+    else if(e.target.value == "÷") {
+      console.log("hey3");
+    }
+  }
 })
 
-btn_add.addEventListener("click", event => {
-  calcDisplay.append(btn_add.value);
-})
 
 
 
-var equationArray = [];
+// var equationArray = [];
 
-btn_equals.addEventListener("click", event => {
-  clickButton();
-})
+// btn_equals.addEventListener("click", event => {
+//   clickButton();
+// })
 
-function clickButton() {
-  // console.log(this);
-  console.log(equationArray)
-  var add = +equationArray[0] + +equationArray[1];
-  calcDisplay.append(+equationArray[0] + +equationArray[1]);
-  console.log(equationArray[0] + "+" + equationArray[1] + "=" + add);
-}
+// function clickButton() {
+//   // console.log(this);
+//   console.log(equationArray)
+//   var add = +equationArray[0] + +equationArray[1];
+//   calcDisplay.append(+equationArray[0] + +equationArray[1]);
+//   console.log(equationArray[0] + "+" + equationArray[1] + "=" + add);
+// }
 
 
+
+
+
+
+
+
+
+
+// const btn_zero = document.getElementById("0");
+// const btn_one = document.getElementById("1");
+// const btn_two = document.getElementById("2");
+// const btn_three = document.getElementById("3");
+// const btn_four = document.getElementById("4");
+// const btn_five = document.getElementById("5");
+// const btn_six = document.getElementById("6");
+// const btn_seven = document.getElementById("7");
+// const btn_eight = document.getElementById("8");
+// const btn_nine = document.getElementById("9");
