@@ -11,50 +11,51 @@ const btn_memAdd = document.getElementById("memAdd");
 const btn_memSubtract = document.getElementById("memSubtract");
 const btn_memRecall = document.getElementById("memRecall");
 
-var firstNumberSelected = false;
+var firstNumberStored = false;
+var secondNumberStored = false;
+var numberIsDisplayed = false;
+var operatorStatus; 
 var num1;
 var num2;
-var operatorStatus; 
+
 
 document.addEventListener('click', function (e){
   if(e.target.className=="numButtons"){ // get buttons values
+    if (numberIsDisplayed == true) {
+      calcDisplay.innerText = ""; 
+      calcDisplay.append(e.target.value);
+      numberIsDisplay = false;
+    } else {
     calcDisplay.append(e.target.value);
+    }
   }
 })
 
 document.addEventListener('click', function(e){
   if(e.target.className=="operatorButtons"){
-    if (firstNumberSelected == false) {
-      if(e.target.value == "+") {
-        operatorFirstSteps();
-        operatorStatus = "+";
-      } else if(e.target.value == "-") {
-        operatorFirstSteps();
-        operatorStatus = "-";
-      } else if(e.target.value == "*") {
-        operatorFirstSteps();
-        operatorStatus = "*";
-      } else if(e.target.value == "÷") {
-        operatorFirstSteps();
-        operatorStatus = "÷";
+    if (firstNumberStored == false) {
+      if(e.target.value == "+" || "-" || "*" || "÷") {
+        firstNumberStored = true;
+        operatorStatus = e.target.value;
+        num1 = calcDisplay.innerText;
+        console.log(calcDisplay.innerText);
+        calcDisplay.innerText = "";         
+        console.log("firstNumberSelected is " + firstNumberStored);
+        console.log("operatorStatus is " + operatorStatus);
       }
     } else {
       var num2 = calcDisplay.innerText;
-      var num3 = +num1 + +num2;
+      var newNumber = +num1 + +num2;
       calcDisplay.innerText = "";
-      calcDisplay.append(num3)
-
+      calcDisplay.append(newNumber);
+      secondNumberStored = true;
+      num1 = newNumber;
+      numberIsDisplayed = true;
     }
   }
 })
 
-function operatorFirstSteps () {
-  firstNumberSelected = true;
-  num1 = calcDisplay.innerText;
-  console.log(calcDisplay.innerText);
-  calcDisplay.innerText = ""; 
-  console.log(firstNumberSelected);
-}
+
 
 
 
