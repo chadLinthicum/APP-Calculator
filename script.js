@@ -23,21 +23,20 @@ document.addEventListener('click', function (e){
 
 document.addEventListener('click', function(e){
   if(e.target.className=="operatorButtons"){
-    if(e.target.value == "+") {
-      firstNumberSelected = true;
-      num1 = calcDisplay.innerText;
-      console.log(calcDisplay.innerText);
-      calcDisplay.innerText = ""; 
-      console.log(firstNumberSelected);
-    }
-    else if(e.target.value == "-") {
-      console.log("hey1");
-    }
-    else if(e.target.value == "*") {
-      console.log("hey2");
-    }
-    else if(e.target.value == "÷") {
-      console.log("hey3");
+    if (firstNumberSelected == false) {
+      if(e.target.value == "+" || "-" || "*" || "÷") {
+        firstNumberSelected = true;
+        num1 = calcDisplay.innerText;
+        console.log(calcDisplay.innerText);
+        calcDisplay.innerText = ""; 
+        console.log(firstNumberSelected);
+      }
+    } else {
+      var num2 = calcDisplay.innerText;
+      var num3 = +num1 + +num2;
+      calcDisplay.innerText = "";
+      calcDisplay.append(num3)
+
     }
   }
 })
