@@ -14,6 +14,7 @@ const btn_memRecall = document.getElementById("memRecall");
 var firstNumberSelected = false;
 var num1;
 var num2;
+var operatorStatus; 
 
 document.addEventListener('click', function (e){
   if(e.target.className=="numButtons"){ // get buttons values
@@ -24,12 +25,18 @@ document.addEventListener('click', function (e){
 document.addEventListener('click', function(e){
   if(e.target.className=="operatorButtons"){
     if (firstNumberSelected == false) {
-      if(e.target.value == "+" || "-" || "*" || "÷") {
-        firstNumberSelected = true;
-        num1 = calcDisplay.innerText;
-        console.log(calcDisplay.innerText);
-        calcDisplay.innerText = ""; 
-        console.log(firstNumberSelected);
+      if(e.target.value == "+") {
+        operatorFirstSteps();
+        operatorStatus = "+";
+      } else if(e.target.value == "-") {
+        operatorFirstSteps();
+        operatorStatus = "-";
+      } else if(e.target.value == "*") {
+        operatorFirstSteps();
+        operatorStatus = "*";
+      } else if(e.target.value == "÷") {
+        operatorFirstSteps();
+        operatorStatus = "÷";
       }
     } else {
       var num2 = calcDisplay.innerText;
@@ -41,6 +48,13 @@ document.addEventListener('click', function(e){
   }
 })
 
+function operatorFirstSteps () {
+  firstNumberSelected = true;
+  num1 = calcDisplay.innerText;
+  console.log(calcDisplay.innerText);
+  calcDisplay.innerText = ""; 
+  console.log(firstNumberSelected);
+}
 
 
 
