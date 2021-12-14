@@ -9,6 +9,7 @@ const btn_equals = document.getElementById("equals");
 var firstNumberStored = false;
 var secondNumberStored = false;
 var numberIsDisplayed = false;
+var initialOperatorChosen = false;
 var operatorStatus; 
 var num1;
 var num2;
@@ -16,6 +17,7 @@ var num2;
 document.addEventListener('click', function (e){
   if(e.target.className=="numButtons"){ // get buttons values
     if (numberIsDisplayed == true) {
+      num1 = calcDisplay.innerText;
       calcDisplay.innerText = ""; 
       calcDisplay.append(e.target.value);
       numberIsDisplayed = false;
@@ -27,54 +29,83 @@ document.addEventListener('click', function (e){
 
 document.addEventListener('click', function(e){
   if(e.target.className=="operatorButtons"){
-    operatorStatus = e.target.value;
-    if (firstNumberStored == false) {
-      firstNumberStored = true;  
+    if (initialOperatorChosen == false) {
+      initialOperatorChosen = true;
+      operatorStatus = e.target.value; 
       num1 = calcDisplay.innerText;
-      calcDisplay.innerText = "";         
-      console.log("firstNumberStored is " + firstNumberStored);
-      console.log("operatorStatus is " + operatorStatus);
-    } //////
-    else if (operatorStatus == "+")  {
-      var num2 = calcDisplay.innerText;
-      var newNumber = +num1 + +num2;
-      calcDisplay.innerText = "";
-      calcDisplay.append(newNumber);
-      secondNumberStored = true;
-      num1 = newNumber;
-      numberIsDisplayed = true;
+      calcDisplay.innerText = ""; 
+      
+    } else if (initialOperatorChosen == true){
+        if (operatorStatus == "+") {
+        num2 = +num1 + +calcDisplay.innerText;
+        calcDisplay.innerText = ""; 
+        calcDisplay.append(num2);
+        numberIsDisplayed = true;
+        operatorStatus = e.target.value; 
+      } else if (operatorStatus == "-") {
+        num2 = +num1 - +calcDisplay.innerText;
+        calcDisplay.innerText = ""; 
+        calcDisplay.append(num2);
+        numberIsDisplayed = true;
+        operatorStatus = e.target.value; 
+        console.log("else if -");
+      }
     }
-    else if (operatorStatus == "-")  {
-      var num2 = calcDisplay.innerText;
-      var newNumber = +num1 - +num2;
-      calcDisplay.innerText = "";
-      calcDisplay.append(newNumber);
-      secondNumberStored = true;
-      num1 = newNumber;
-      numberIsDisplayed = true;
     }
-  }
 })
 
-btn_equals.addEventListener('click', function(e){
-  if (operatorStatus == "+"){
-      var num2 = calcDisplay.innerText;
-      var newNumber = +num1 + +num2;
-      calcDisplay.innerText = "";
-      calcDisplay.append(newNumber);
-      secondNumberStored = true;
-      num1 = newNumber;
-      numberIsDisplayed = true;
-  } else if (operatorStatus == "-"){
-      var num2 = calcDisplay.innerText;
-      var newNumber = +num1 - +num2;
-      calcDisplay.innerText = "";
-      calcDisplay.append(newNumber);
-      secondNumberStored = true;
-      num1 = newNumber;
-      numberIsDisplayed = true;
-  }
-})
+
+
+
+
+    
+//     if (firstNumberStored == false) {
+//       firstNumberStored = true;  
+//       num1 = calcDisplay.innerText;
+//       calcDisplay.innerText = "";         
+//       console.log("firstNumberStored is " + firstNumberStored);
+//       console.log("operatorStatus is " + operatorStatus);
+//     } //////
+//     else if (operatorStatus == "+")  {
+//       var num2 = calcDisplay.innerText;
+//       var newNumber = +num1 + +num2;
+//       calcDisplay.innerText = "";
+//       calcDisplay.append(newNumber);
+//       secondNumberStored = true;
+//       num1 = newNumber;
+//       numberIsDisplayed = true;
+//     }
+//     else if (operatorStatus == "-")  {
+//       var num2 = calcDisplay.innerText;
+//       var newNumber = +num1 - +num2;
+//       calcDisplay.innerText = "";
+//       calcDisplay.append(newNumber);
+//       secondNumberStored = true;
+//       num1 = newNumber;
+//       numberIsDisplayed = true;
+//     }
+//   }
+// })
+
+// btn_equals.addEventListener('click', function(e){
+//   if (operatorStatus == "+"){
+//       var num2 = calcDisplay.innerText;
+//       var newNumber = +num1 + +num2;
+//       calcDisplay.innerText = "";
+//       calcDisplay.append(newNumber);
+//       secondNumberStored = true;
+//       num1 = newNumber;
+//       numberIsDisplayed = true;
+//   } else if (operatorStatus == "-"){
+//       var num2 = calcDisplay.innerText;
+//       var newNumber = +num1 - +num2;
+//       calcDisplay.innerText = "";
+//       calcDisplay.append(newNumber);
+//       secondNumberStored = true;
+//       num1 = newNumber;
+//       numberIsDisplayed = true;
+//   }
+// })
 
 
 
