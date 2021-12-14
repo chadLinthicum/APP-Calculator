@@ -1,15 +1,10 @@
-let calcDisplay = document.getElementById("calcDisplay");
-
-const btn_add = document.getElementById("add");
-const btn_subtract = document.getElementById("subtract");
-const btn_multiply = document.getElementById("multiply");
-const btn_divide = document.getElementById("divide");
-const btn_clear = document.getElementById("clear");
-const btn_decimal = document.getElementById("decimal");
-const btn_equals = document.getElementById("equals");
+const calcDisplay = document.getElementById("calcDisplay");
 const btn_memAdd = document.getElementById("memAdd");
 const btn_memSubtract = document.getElementById("memSubtract");
 const btn_memRecall = document.getElementById("memRecall");
+const btn_clear = document.getElementById("clear");
+const btn_decimal = document.getElementById("decimal");
+const btn_equals = document.getElementById("equals");
 
 var firstNumberStored = false;
 var secondNumberStored = false;
@@ -18,34 +13,40 @@ var operatorStatus;
 var num1;
 var num2;
 
-
 document.addEventListener('click', function (e){
   if(e.target.className=="numButtons"){ // get buttons values
     if (numberIsDisplayed == true) {
       calcDisplay.innerText = ""; 
       calcDisplay.append(e.target.value);
-      numberIsDisplay = false;
+      numberIsDisplayed = false;
     } else {
-    calcDisplay.append(e.target.value);
+      calcDisplay.append(e.target.value);
     }
   }
 })
 
 document.addEventListener('click', function(e){
   if(e.target.className=="operatorButtons"){
+    operatorStatus = e.target.value;
     if (firstNumberStored == false) {
-      if(e.target.value == "+" || "-" || "*" || "÷") {
-        firstNumberStored = true;
-        operatorStatus = e.target.value;
-        num1 = calcDisplay.innerText;
-        console.log(calcDisplay.innerText);
-        calcDisplay.innerText = "";         
-        console.log("firstNumberSelected is " + firstNumberStored);
-        console.log("operatorStatus is " + operatorStatus);
-      }
-    } else {
+      firstNumberStored = true;  
+      num1 = calcDisplay.innerText;
+      calcDisplay.innerText = "";         
+      console.log("firstNumberStored is " + firstNumberStored);
+      console.log("operatorStatus is " + operatorStatus);
+    } //////
+    else if (operatorStatus == "+")  {
       var num2 = calcDisplay.innerText;
       var newNumber = +num1 + +num2;
+      calcDisplay.innerText = "";
+      calcDisplay.append(newNumber);
+      secondNumberStored = true;
+      num1 = newNumber;
+      numberIsDisplayed = true;
+    }
+    else if (operatorStatus == "-")  {
+      var num2 = calcDisplay.innerText;
+      var newNumber = +num1 - +num2;
       calcDisplay.innerText = "";
       calcDisplay.append(newNumber);
       secondNumberStored = true;
@@ -55,8 +56,30 @@ document.addEventListener('click', function(e){
   }
 })
 
+btn_equals.addEventListener('click', function(e){
+  if (operatorStatus == "+"){
+      var num2 = calcDisplay.innerText;
+      var newNumber = +num1 + +num2;
+      calcDisplay.innerText = "";
+      calcDisplay.append(newNumber);
+      secondNumberStored = true;
+      num1 = newNumber;
+      numberIsDisplayed = true;
+  } else if (operatorStatus == "-"){
+      var num2 = calcDisplay.innerText;
+      var newNumber = +num1 - +num2;
+      calcDisplay.innerText = "";
+      calcDisplay.append(newNumber);
+      secondNumberStored = true;
+      num1 = newNumber;
+      numberIsDisplayed = true;
+  }
+})
 
 
+
+
+// if(e.target.value == "+" || "-" || "*" || "÷") {
 
 
 // var equationArray = [];
@@ -92,3 +115,7 @@ document.addEventListener('click', function(e){
 // const btn_seven = document.getElementById("7");
 // const btn_eight = document.getElementById("8");
 // const btn_nine = document.getElementById("9");
+// const btn_add = document.getElementById("add");
+// const btn_subtract = document.getElementById("subtract");
+// const btn_multiply = document.getElementById("multiply");
+// const btn_divide = document.getElementById("divide");
