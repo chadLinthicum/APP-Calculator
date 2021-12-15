@@ -38,20 +38,73 @@ document.addEventListener('click', function(e){
       calcDisplay.innerText = ""; 
       
     } else if (initialOperatorChosen == true && operatorJustPressed == false){
-        // if (operatorStatus == "+") {
-        num2 = +num1 + +calcDisplay.innerText;
-        calcDisplay.innerText = ""; 
-        calcDisplay.append(num2);
-        numberIsDisplayed = true;
-        operatorStatus = e.target.value; 
-        console.log("consec +")
-        operatorJustPressed = true;
-        console.log(operatorJustPressed);
+        if (operatorStatus == "+") {
+        add();
+        } else if (operatorStatus == "-") {
+          subtract();
+        } else if (operatorStatus == "*") {
+          multiply();
+        } else {
+          divide();
+        }
+        
     } else if (initialOperatorChosen == true && operatorJustPressed == true){
       if (calcDisplay.innerHTML != ""){
         console.log("hey");
       }
     }
+
+
+
+
+
+
+
+function add () {
+  num2 = +num1 + +calcDisplay.innerText;
+  calcDisplay.innerText = ""; 
+  calcDisplay.append(num2);
+  numberIsDisplayed = true;
+  operatorStatus = e.target.value; 
+  console.log("consec +")
+  operatorJustPressed = true;
+  console.log(operatorJustPressed);
+}
+
+function subtract () {
+  num2 = +num1 - +calcDisplay.innerText;
+  calcDisplay.innerText = ""; 
+  calcDisplay.append(num2);
+  numberIsDisplayed = true;
+  operatorStatus = e.target.value; 
+  console.log("consec +")
+  operatorJustPressed = true;
+  console.log(operatorJustPressed);
+}
+
+function multiply () {
+  num2 = +num1 * +calcDisplay.innerText;
+  calcDisplay.innerText = ""; 
+  calcDisplay.append(num2);
+  numberIsDisplayed = true;
+  operatorStatus = e.target.value; 
+  console.log("consec +")
+  operatorJustPressed = true;
+  console.log(operatorJustPressed);
+}
+
+function divide () {
+  num2 = +num1 / +calcDisplay.innerText;
+  calcDisplay.innerText = ""; 
+  calcDisplay.append(num2);
+  numberIsDisplayed = true;
+  operatorStatus = e.target.value; 
+  console.log("consec +")
+  operatorJustPressed = true;
+  console.log(operatorJustPressed);
+}
+
+
       // } else if (operatorStatus == "-") {
       //   // console.log(num1);
       //   // console.log(num2);
