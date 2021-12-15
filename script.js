@@ -6,15 +6,14 @@ const btn_clear = document.getElementById("clear");
 const btn_decimal = document.getElementById("decimal");
 const btn_equals = document.getElementById("equals");
 
-var firstNumberStored = false;
-var secondNumberStored = false;
-var numberIsDisplayed = false;
-var initialOperatorChosen = false;
-var operatorJustPressed = false
-var decimalJustPressed = false;
-var operatorStatus; 
-var num1;
-var num2;
+let firstNumberStored = false;
+let secondNumberStored = false;
+let numberIsDisplayed = false;
+let initialOperatorChosen = false;
+let operatorJustPressed = false
+let operatorStatus; 
+let num1;
+let num2;
 
 document.addEventListener('click', function (e){
   if(e.target.className=="numButtons"){ // get buttons values
@@ -86,10 +85,9 @@ document.addEventListener('click', function (e){
 
 document.addEventListener('click', function (e){
   if(e.target.id=="decimal"){ // get buttons values
-    if (decimalJustPressed == false) {
-    calcDisplay.append(".");
-    decimalJustPressed = true;
+    if (calcDisplay.textContent.includes(".")) {
     } else {
+      calcDisplay.append(".");
     }
   }
 })
