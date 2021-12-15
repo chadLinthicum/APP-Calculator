@@ -10,13 +10,14 @@ let firstNumberStored = false;
 let secondNumberStored = false;
 let numberIsDisplayed = false;
 let initialOperatorChosen = false;
-let operatorJustPressed = false
+let operatorJustPressed = false;
+let equalsJustPressed = false;
 let operatorStatus; 
 let num1;
 let num2;
 
 document.addEventListener('click', function (e){
-  if(e.target.className=="numButtons"){ // get buttons values
+  if(e.target.className=="numButtons"){ 
     if (numberIsDisplayed == true) {
       num1 = calcDisplay.innerText;
       calcDisplay.innerText = ""; 
@@ -76,7 +77,7 @@ document.addEventListener('click', function(e){
 
 
 document.addEventListener('click', function (e){
-  if(e.target.id=="clear"){ // get buttons values
+  if(e.target.id=="clear"){ 
     calcDisplay.innerText = "";
     num1 = 0;
     num2 = 0;
@@ -84,16 +85,18 @@ document.addEventListener('click', function (e){
 })
 
 document.addEventListener('click', function (e){
-  if(e.target.id=="decimal"){ // get buttons values
-    if (calcDisplay.textContent.includes(".")) {
+  if(e.target.id=="decimal"){ 
+    if (equalsJustPressed == "true") {
+      calcDisplay.append(".");
+    }else if (calcDisplay.textContent.includes(".") && operatorJustPressed == true) {
     } else {
       calcDisplay.append(".");
     }
   }
 })
 
-document.addEventListener('click', function (e){
-  if(e.target.id=="equals"){ // get buttons values
+document.addEventListener('click', function (e){ //recycled code from above until I figure out a better solution
+  if(e.target.id=="equals"){ 
     if (initialOperatorChosen == false && operatorJustPressed == false) {
       initialOperatorChosen = true;
       operatorStatus = e.target.value; 
@@ -134,5 +137,7 @@ document.addEventListener('click', function (e){
         operatorStatus = e.target.value;
       }  
     } 
+    equalsJustPressed = true;
+    console.log(equalsJustPressed);
   }
 })
