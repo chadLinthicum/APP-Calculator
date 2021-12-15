@@ -92,3 +92,47 @@ document.addEventListener('click', function (e){
   }
 })
 
+document.addEventListener('click', function (e){
+  if(e.target.id=="equals"){ // get buttons values
+    if (initialOperatorChosen == false && operatorJustPressed == false) {
+      initialOperatorChosen = true;
+      operatorStatus = e.target.value; 
+      num1 = calcDisplay.innerText;
+      calcDisplay.innerText = ""; 
+    } else if (initialOperatorChosen == true && operatorJustPressed == false){
+        if (operatorStatus == "+") {
+          num2 = +num1 + +calcDisplay.innerText;
+          calcDisplay.innerText = ""; 
+          calcDisplay.append(num2);
+          numberIsDisplayed = true;
+          operatorStatus = e.target.value; 
+          operatorJustPressed = true;
+        } else if (operatorStatus == "-") {
+          num2 = +num1 - +calcDisplay.innerText;
+          calcDisplay.innerText = ""; 
+          calcDisplay.append(num2);
+          numberIsDisplayed = true;
+          operatorStatus = e.target.value; 
+          operatorJustPressed = true;
+        } else if (operatorStatus == "*") {
+          num2 = +num1 * +calcDisplay.innerText;
+          calcDisplay.innerText = ""; 
+          calcDisplay.append(num2);
+          numberIsDisplayed = true;
+          operatorStatus = e.target.value; 
+          operatorJustPressed = true;
+        } else {
+          num2 = +num1 / +calcDisplay.innerText;
+          calcDisplay.innerText = ""; 
+          calcDisplay.append(num2);
+          numberIsDisplayed = true;
+          operatorStatus = e.target.value; 
+          operatorJustPressed = true;
+        }       
+    } else if (initialOperatorChosen == true && operatorJustPressed == true){
+      if (calcDisplay.innerHTML != ""){
+        operatorStatus = e.target.value;
+      }  
+    } 
+  }
+})
