@@ -36,73 +36,52 @@ document.addEventListener('click', function(e){
       operatorStatus = e.target.value; 
       num1 = calcDisplay.innerText;
       calcDisplay.innerText = ""; 
-      
     } else if (initialOperatorChosen == true && operatorJustPressed == false){
         if (operatorStatus == "+") {
-        add();
+          num2 = +num1 + +calcDisplay.innerText;
+          calcDisplay.innerText = ""; 
+          calcDisplay.append(num2);
+          numberIsDisplayed = true;
+          operatorStatus = e.target.value; 
+          console.log("consec +")
+          operatorJustPressed = true;
+          console.log(operatorJustPressed);
         } else if (operatorStatus == "-") {
-          subtract();
+          num2 = +num1 - +calcDisplay.innerText;
+          calcDisplay.innerText = ""; 
+          calcDisplay.append(num2);
+          numberIsDisplayed = true;
+          operatorStatus = e.target.value; 
+          console.log("consec +")
+          operatorJustPressed = true;
+          console.log(operatorJustPressed);
         } else if (operatorStatus == "*") {
-          multiply();
+          num2 = +num1 * +calcDisplay.innerText;
+          calcDisplay.innerText = ""; 
+          calcDisplay.append(num2);
+          numberIsDisplayed = true;
+          operatorStatus = e.target.value; 
+          console.log("consec +")
+          operatorJustPressed = true;
+          console.log(operatorJustPressed);
         } else {
-          divide();
-        }
-        
+          num2 = +num1 / +calcDisplay.innerText;
+          calcDisplay.innerText = ""; 
+          calcDisplay.append(num2);
+          numberIsDisplayed = true;
+          operatorStatus = e.target.value; 
+          console.log("consec +")
+          operatorJustPressed = true;
+          console.log(operatorJustPressed);
+        }       
     } else if (initialOperatorChosen == true && operatorJustPressed == true){
       if (calcDisplay.innerHTML != ""){
         console.log("hey");
-      }
-    }
+      }  
+    } 
+  }
+})
 
-
-
-
-
-
-
-function add () {
-  num2 = +num1 + +calcDisplay.innerText;
-  calcDisplay.innerText = ""; 
-  calcDisplay.append(num2);
-  numberIsDisplayed = true;
-  operatorStatus = e.target.value; 
-  console.log("consec +")
-  operatorJustPressed = true;
-  console.log(operatorJustPressed);
-}
-
-function subtract () {
-  num2 = +num1 - +calcDisplay.innerText;
-  calcDisplay.innerText = ""; 
-  calcDisplay.append(num2);
-  numberIsDisplayed = true;
-  operatorStatus = e.target.value; 
-  console.log("consec +")
-  operatorJustPressed = true;
-  console.log(operatorJustPressed);
-}
-
-function multiply () {
-  num2 = +num1 * +calcDisplay.innerText;
-  calcDisplay.innerText = ""; 
-  calcDisplay.append(num2);
-  numberIsDisplayed = true;
-  operatorStatus = e.target.value; 
-  console.log("consec +")
-  operatorJustPressed = true;
-  console.log(operatorJustPressed);
-}
-
-function divide () {
-  num2 = +num1 / +calcDisplay.innerText;
-  calcDisplay.innerText = ""; 
-  calcDisplay.append(num2);
-  numberIsDisplayed = true;
-  operatorStatus = e.target.value; 
-  console.log("consec +")
-  operatorJustPressed = true;
-  console.log(operatorJustPressed);
-}
 
 
       // } else if (operatorStatus == "-") {
@@ -126,8 +105,7 @@ function divide () {
       //   operatorStatus = e.target.value; 
       
     
-    }
-})
+    
 
 
 
