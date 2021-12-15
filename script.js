@@ -44,43 +44,32 @@ document.addEventListener('click', function(e){
           calcDisplay.append(num2);
           numberIsDisplayed = true;
           operatorStatus = e.target.value; 
-          console.log("consec +")
           operatorJustPressed = true;
-          console.log(operatorJustPressed);
         } else if (operatorStatus == "-") {
           num2 = +num1 - +calcDisplay.innerText;
           calcDisplay.innerText = ""; 
           calcDisplay.append(num2);
           numberIsDisplayed = true;
           operatorStatus = e.target.value; 
-          console.log("consec -")
           operatorJustPressed = true;
-          console.log(operatorJustPressed);
         } else if (operatorStatus == "*") {
           num2 = +num1 * +calcDisplay.innerText;
           calcDisplay.innerText = ""; 
           calcDisplay.append(num2);
           numberIsDisplayed = true;
           operatorStatus = e.target.value; 
-          console.log("consec *")
           operatorJustPressed = true;
-          console.log(operatorJustPressed);
         } else {
           num2 = +num1 / +calcDisplay.innerText;
           calcDisplay.innerText = ""; 
           calcDisplay.append(num2);
           numberIsDisplayed = true;
           operatorStatus = e.target.value; 
-          console.log("consec divide")
           operatorJustPressed = true;
-          console.log(operatorJustPressed);
         }       
     } else if (initialOperatorChosen == true && operatorJustPressed == true){
       if (calcDisplay.innerHTML != ""){
-        console.log("num1 = " + num1);
-        console.log("num2 = " + num2);
         operatorStatus = e.target.value;
-        console.log("operator = " + operatorStatus);       
       }  
     } 
   }
@@ -127,14 +116,7 @@ document.addEventListener('click', function (e){
       //   numberIsDisplayed = true;
       //   operatorStatus = e.target.value; 
       
-    
-    
-
-
-
-
-
-    
+       
 //     if (firstNumberStored == false) {
 //       firstNumberStored = true;  
 //       num1 = calcDisplay.innerText;
