@@ -42,13 +42,17 @@ document.addEventListener('click', function(e){
         calcDisplay.append(num2);
         numberIsDisplayed = true;
         operatorStatus = e.target.value; 
+        console.log("if +")
       } else if (operatorStatus == "-") {
+        // console.log(num1);
+        // console.log(num2);
         num2 = +num1 - +calcDisplay.innerText;
         calcDisplay.innerText = ""; 
         calcDisplay.append(num2);
         numberIsDisplayed = true;
         operatorStatus = e.target.value; 
-        console.log("else if -");
+        // console.log("else if -");
+        // console.log(num2);
       }
     }
     }
