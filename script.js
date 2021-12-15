@@ -11,6 +11,7 @@ var secondNumberStored = false;
 var numberIsDisplayed = false;
 var initialOperatorChosen = false;
 var operatorJustPressed = false
+var decimalJustPressed = false;
 var operatorStatus; 
 var num1;
 var num2;
@@ -52,7 +53,7 @@ document.addEventListener('click', function(e){
           calcDisplay.append(num2);
           numberIsDisplayed = true;
           operatorStatus = e.target.value; 
-          console.log("consec +")
+          console.log("consec -")
           operatorJustPressed = true;
           console.log(operatorJustPressed);
         } else if (operatorStatus == "*") {
@@ -61,7 +62,7 @@ document.addEventListener('click', function(e){
           calcDisplay.append(num2);
           numberIsDisplayed = true;
           operatorStatus = e.target.value; 
-          console.log("consec +")
+          console.log("consec *")
           operatorJustPressed = true;
           console.log(operatorJustPressed);
         } else {
@@ -70,15 +71,37 @@ document.addEventListener('click', function(e){
           calcDisplay.append(num2);
           numberIsDisplayed = true;
           operatorStatus = e.target.value; 
-          console.log("consec +")
+          console.log("consec divide")
           operatorJustPressed = true;
           console.log(operatorJustPressed);
         }       
     } else if (initialOperatorChosen == true && operatorJustPressed == true){
       if (calcDisplay.innerHTML != ""){
-        console.log("hey");
+        console.log("num1 = " + num1);
+        console.log("num2 = " + num2);
+        operatorStatus = e.target.value;
+        console.log("operator = " + operatorStatus);       
       }  
     } 
+  }
+})
+
+
+document.addEventListener('click', function (e){
+  if(e.target.id=="clear"){ // get buttons values
+    calcDisplay.innerText = "";
+    num1 = 0;
+    num2 = 0;
+  }  
+})
+
+document.addEventListener('click', function (e){
+  if(e.target.id=="decimal"){ // get buttons values
+    if (decimalJustPressed == false) {
+    calcDisplay.append(".");
+    decimalJustPressed = true;
+    } else {
+    }
   }
 })
 
