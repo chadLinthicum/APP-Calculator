@@ -30,7 +30,7 @@ document.addEventListener('click', function (e){
   }
 })
 
-document.addEventListener('click', function(e){
+function calculate(e) {
   if(e.target.className=="operatorButtons"){
     if (initialOperatorChosen == false && operatorJustPressed == false) {
       initialOperatorChosen = true;
@@ -73,7 +73,9 @@ document.addEventListener('click', function(e){
       }  
     } 
   }
-})
+}
+
+document.addEventListener('click', (e) => calculate(e));
 
 
 document.addEventListener('click', function (e){
@@ -81,12 +83,18 @@ document.addEventListener('click', function (e){
     calcDisplay.innerText = "";
     num1 = 0;
     num2 = 0;
+    firstNumberStored = false;
+    secondNumberStored = false;
+    numberIsDisplayed = false;
+    initialOperatorChosen = false;
+    operatorJustPressed = false;
+    equalsJustPressed = false;
   }  
 })
 
 document.addEventListener('click', function (e){
-  if(e.target.id=="decimal"){ 
-    if (equalsJustPressed == "true") {
+  if(e.target.id === "decimal"){ 
+    if (equalsJustPressed === "true") {
       calcDisplay.append(".");
     }else if (calcDisplay.textContent.includes(".") && operatorJustPressed == true) {
     } else {
