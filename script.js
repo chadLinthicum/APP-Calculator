@@ -2,9 +2,6 @@ const calcDisplay = document.getElementById("calcDisplay");
 const btn_memAdd = document.getElementById("memAdd");
 const btn_memSubtract = document.getElementById("memSubtract");
 const btn_memRecall = document.getElementById("memRecall");
-const btn_clear = document.getElementById("clear");
-const btn_decimal = document.getElementById("decimal");
-const btn_equals = document.getElementById("equals");
 
 let firstNumberStored = false;
 let secondNumberStored = false;
@@ -30,53 +27,13 @@ document.addEventListener('click', function (e){
   }
 })
 
-function calculate(e) {
-  if(e.target.className=="operatorButtons"){
-    if (initialOperatorChosen == false && operatorJustPressed == false) {
-      initialOperatorChosen = true;
-      operatorStatus = e.target.value; 
-      num1 = calcDisplay.innerText;
-      calcDisplay.innerText = ""; 
-    } else if (initialOperatorChosen == true && operatorJustPressed == false){
-        if (operatorStatus == "+") {
-          num2 = +num1 + +calcDisplay.innerText;
-          calcDisplay.innerText = ""; 
-          calcDisplay.append(num2);
-          numberIsDisplayed = true;
-          operatorStatus = e.target.value; 
-          operatorJustPressed = true;
-        } else if (operatorStatus == "-") {
-          num2 = +num1 - +calcDisplay.innerText;
-          calcDisplay.innerText = ""; 
-          calcDisplay.append(num2);
-          numberIsDisplayed = true;
-          operatorStatus = e.target.value; 
-          operatorJustPressed = true;
-        } else if (operatorStatus == "*") {
-          num2 = +num1 * +calcDisplay.innerText;
-          calcDisplay.innerText = ""; 
-          calcDisplay.append(num2);
-          numberIsDisplayed = true;
-          operatorStatus = e.target.value; 
-          operatorJustPressed = true;
-        } else {
-          num2 = +num1 / +calcDisplay.innerText;
-          calcDisplay.innerText = ""; 
-          calcDisplay.append(num2);
-          numberIsDisplayed = true;
-          operatorStatus = e.target.value; 
-          operatorJustPressed = true;
-        }       
-    } else if (initialOperatorChosen == true && operatorJustPressed == true){
-      if (calcDisplay.innerHTML != ""){
-        operatorStatus = e.target.value;
-      }  
-    } 
+document.addEventListener('click', (e) => {
+  if(e.target.className == "operatorButtons"){
+    calculate(e);
+  } else if (e.target.className == "equals"){
+    calculate(e);
   }
-}
-
-document.addEventListener('click', (e) => calculate(e));
-
+})
 
 document.addEventListener('click', function (e){
   if(e.target.id=="clear"){ 
@@ -92,60 +49,56 @@ document.addEventListener('click', function (e){
   }  
 })
 
-document.addEventListener('click', function (e){
-  if(e.target.id === "decimal"){ 
-    if (equalsJustPressed === "true") {
-      calcDisplay.append(".");
-    }else if (calcDisplay.textContent.includes(".") && operatorJustPressed == true) {
-    } else {
-      calcDisplay.append(".");
-    }
-  }
-})
+function calculate(e) {
+  if (initialOperatorChosen == false && operatorJustPressed == false) {
+    initialOperatorChosen = true;
+    operatorStatus = e.target.value; 
+    num1 = calcDisplay.innerText;
+    calcDisplay.innerText = ""; 
+  } else if (initialOperatorChosen == true && operatorJustPressed == false){
+      if (operatorStatus == "+") {
+        num2 = +num1 + +calcDisplay.innerText;
+        calcDisplay.innerText = ""; 
+        calcDisplay.append(num2);
+        numberIsDisplayed = true;
+        operatorStatus = e.target.value; 
+        operatorJustPressed = true;
+      } else if (operatorStatus == "-") {
+        num2 = +num1 - +calcDisplay.innerText;
+        calcDisplay.innerText = ""; 
+        calcDisplay.append(num2);
+        numberIsDisplayed = true;
+        operatorStatus = e.target.value; 
+        operatorJustPressed = true;
+      } else if (operatorStatus == "*") {
+        num2 = +num1 * +calcDisplay.innerText;
+        calcDisplay.innerText = ""; 
+        calcDisplay.append(num2);
+        numberIsDisplayed = true;
+        operatorStatus = e.target.value; 
+        operatorJustPressed = true;
+      } else {
+        num2 = +num1 / +calcDisplay.innerText;
+        calcDisplay.innerText = ""; 
+        calcDisplay.append(num2);
+        numberIsDisplayed = true;
+        operatorStatus = e.target.value; 
+        operatorJustPressed = true;
+      }       
+  } else if (initialOperatorChosen == true && operatorJustPressed == true){
+    if (calcDisplay.innerHTML != ""){
+      operatorStatus = e.target.value;
+   }  
+ } 
+}
 
-document.addEventListener('click', function (e){ //recycled code from above until I figure out a better solution
-  if(e.target.id=="equals"){ 
-    if (initialOperatorChosen == false && operatorJustPressed == false) {
-      initialOperatorChosen = true;
-      operatorStatus = e.target.value; 
-      num1 = calcDisplay.innerText;
-      calcDisplay.innerText = ""; 
-    } else if (initialOperatorChosen == true && operatorJustPressed == false){
-        if (operatorStatus == "+") {
-          num2 = +num1 + +calcDisplay.innerText;
-          calcDisplay.innerText = ""; 
-          calcDisplay.append(num2);
-          numberIsDisplayed = true;
-          operatorStatus = e.target.value; 
-          operatorJustPressed = true;
-        } else if (operatorStatus == "-") {
-          num2 = +num1 - +calcDisplay.innerText;
-          calcDisplay.innerText = ""; 
-          calcDisplay.append(num2);
-          numberIsDisplayed = true;
-          operatorStatus = e.target.value; 
-          operatorJustPressed = true;
-        } else if (operatorStatus == "*") {
-          num2 = +num1 * +calcDisplay.innerText;
-          calcDisplay.innerText = ""; 
-          calcDisplay.append(num2);
-          numberIsDisplayed = true;
-          operatorStatus = e.target.value; 
-          operatorJustPressed = true;
-        } else {
-          num2 = +num1 / +calcDisplay.innerText;
-          calcDisplay.innerText = ""; 
-          calcDisplay.append(num2);
-          numberIsDisplayed = true;
-          operatorStatus = e.target.value; 
-          operatorJustPressed = true;
-        }       
-    } else if (initialOperatorChosen == true && operatorJustPressed == true){
-      if (calcDisplay.innerHTML != ""){
-        operatorStatus = e.target.value;
-      }  
-    } 
-    equalsJustPressed = true;
-    console.log(equalsJustPressed);
-  }
-})
+// document.addEventListener('click', function (e){
+//   if(e.target.id === "decimal"){ 
+//     if (equalsJustPressed === "true") {
+//       calcDisplay.append(".");
+//     }else if (calcDisplay.textContent.includes(".") && operatorJustPressed == true) {
+//     } else {
+//       calcDisplay.append(".");
+//     }
+//   }
+// })
