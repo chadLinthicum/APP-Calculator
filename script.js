@@ -3,7 +3,6 @@ const btn_memAdd = document.getElementById("memAdd");
 const btn_memSubtract = document.getElementById("memSubtract");
 const btn_memRecall = document.getElementById("memRecall");
 
-let firstNumberStored = false;
 let numberIsDisplayed = false;
 let initialOperatorChosen = false;
 let operatorJustPressed = false;
@@ -15,7 +14,7 @@ let num2;
 document.addEventListener('click', function (e){
   if(e.target.className=="numButtons"){ 
     if (numberIsDisplayed == true) {
-      num1 = calcDisplay.innerText;
+      num1 = +calcDisplay.innerText;
       calcDisplay.innerText = ""; 
       calcDisplay.append(e.target.value);
       numberIsDisplayed = false;
@@ -31,7 +30,7 @@ document.addEventListener('click', (e) => {
     calculate(e);
   } else if (e.target.className == "equals"){
     calculate(e);
-    equalsJustPressed = true;
+    // equalsJustPressed = true;
   }
 })
 
@@ -40,7 +39,6 @@ document.addEventListener('click', function (e){
     calcDisplay.innerText = "";
     num1 = 0;
     num2 = 0;
-    firstNumberStored = false;
     numberIsDisplayed = false;
     initialOperatorChosen = false;
     operatorJustPressed = false;
@@ -67,7 +65,7 @@ function calculate(e) {
     operatorStatus = e.target.value; 
     num1 = calcDisplay.innerText;
     calcDisplay.innerText = ""; 
-  } else if (initialOperatorChosen == true && operatorJustPressed == false){
+  } else if (initialOperatorChosen == true && operatorJustPressed === false){
     switch (operatorStatus) {
       case "+": 
         num2 = +num1 + +calcDisplay.innerText;
@@ -77,7 +75,32 @@ function calculate(e) {
         operatorStatus = e.target.value; 
         operatorJustPressed = true;
         break;
-
+      case "-": 
+        num2 = +num1 - +calcDisplay.innerText;
+        calcDisplay.innerText = ""; 
+        calcDisplay.append(num2);
+        numberIsDisplayed = true;
+        operatorStatus = e.target.value; 
+        operatorJustPressed = true;  
+        break;
+      case "*": 
+        num2 = +num1 * +calcDisplay.innerText;
+        calcDisplay.innerText = ""; 
+        calcDisplay.append(num2);
+        numberIsDisplayed = true;
+        operatorStatus = e.target.value; 
+        operatorJustPressed = true;
+        break;
+      case "÷": 
+        num2 = +num1 / +calcDisplay.innerText;
+        calcDisplay.innerText = ""; 
+        calcDisplay.append(num2);
+        numberIsDisplayed = true;
+        operatorStatus = e.target.value; 
+        operatorJustPressed = true;
+        break;
+      case "=":
+        console.log("monkeys");
     }  
     
     
