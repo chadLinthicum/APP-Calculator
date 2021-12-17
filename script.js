@@ -46,6 +46,7 @@ document.addEventListener('click', function (e){
     calcDisplay.innerText = "";
     num1 = 0;
     num2 = 0;
+    operatorStatus = "";
     numberIsDisplayed = false;
     initialOperatorChosen = false;
     operatorJustPressed = false;
@@ -68,7 +69,7 @@ function calculate(e) {
   if (initialOperatorChosen == false && operatorJustPressed == false) {
     initialOperatorChosen = true;
     operatorStatus = e.target.value; 
-    num1 = calcDisplay.innerText;
+    num1 = +calcDisplay.innerText;
     calcDisplay.innerText = ""; 
   } else if (initialOperatorChosen == true && operatorJustPressed === false){
       switch (operatorStatus) {
