@@ -10,12 +10,12 @@ let num1;
 let num2;
 
 document.addEventListener('click', function (e){
-  if(e.target.className=="numButtons"){ 
-    if (equalsJustPressed == true) {
+  if(e.target.className === "numButtons"){ 
+    if (equalsJustPressed === true) {
       calcDisplay.innerText = "";
       calcDisplay.append(e.target.value);
       equalsJustPressed = false;
-    } else if (numberIsDisplayed == true) {
+    } else if (numberIsDisplayed === true) {
         num1 = +calcDisplay.innerText;
         calcDisplay.innerText = ""; 
         calcDisplay.append(e.target.value);
@@ -28,23 +28,22 @@ document.addEventListener('click', function (e){
 })
 
 document.addEventListener('click', (e) => {
-  if(e.target.className == "operatorButtons"){
+  if(e.target.className === "operatorButtons"){
     calculate(e);
-  } else if (e.target.className == "equals"){
+  } else if (e.target.className === "equals"){
       calculate(e);
       numberIsDisplayed = false;
       initialOperatorChosen = false;
       operatorJustPressed = false;
       decimalJustPressed = false;
       equalsJustPressed = true;
-      operatorStatus; 
       num1 = 0;
       num2 = 0;
   }
 })
 
 document.addEventListener('click', function (e){
-  if(e.target.id=="clear"){ 
+  if(e.target.id === "clear"){ 
     calcDisplay.innerText = "";
     num1 = 0;
     num2 = 0;
@@ -54,6 +53,26 @@ document.addEventListener('click', function (e){
     operatorJustPressed = false;
     equalsJustPressed = false;
     decimalJustPressed = false;
+  }  
+})
+
+document.addEventListener('click', function (e){
+  if(e.target.id === "MR"){ 
+    MR = +calcDisplay.innerText;
+  }  
+})
+
+document.addEventListener('click', function (e){
+  if(e.target.id === "M+"){ 
+    mTemp = +calcDisplay.innerText;
+    calcDisplay.innerText = mTemp + MR;
+  }  
+})
+
+document.addEventListener('click', function (e){
+  if(e.target.id === "M-"){ 
+    mTemp = +calcDisplay.innerText;
+    calcDisplay.innerText = mTemp - MR;
   }  
 })
 
@@ -70,7 +89,6 @@ document.addEventListener('click', function (e){
         calcDisplay.append(".");
         decimalJustPressed = true;
         equalsJustPressed = false;
-        console.log("decimal just pressed");
     } else {
         calcDisplay.append (".");
         equalsJustPressed = false;
@@ -79,12 +97,12 @@ document.addEventListener('click', function (e){
 })
 
 function calculate(e) {
-  if (initialOperatorChosen == false && operatorJustPressed == false) {
+  if (initialOperatorChosen === false && operatorJustPressed === false) {
     initialOperatorChosen = true;
     operatorStatus = e.target.value; 
     num1 = +calcDisplay.innerText;
     calcDisplay.innerText = ""; 
-  } else if (initialOperatorChosen == true && operatorJustPressed === false){
+  } else if (initialOperatorChosen === true && operatorJustPressed === false){
       switch (operatorStatus) {
         case "+": 
           num2 = +num1 + +calcDisplay.innerText;
@@ -121,7 +139,3 @@ function calculate(e) {
     }  
   }
 }
-
-// document.getElementById('equals').addEventListener('click', () => {
-//   console.log('equal pressed');
-// })
