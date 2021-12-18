@@ -4,6 +4,7 @@ let numberIsDisplayed = false;
 let initialOperatorChosen = false;
 let operatorJustPressed = false;
 let equalsJustPressed = false;
+let decimalJustPressed = false;
 let operatorStatus; 
 let num1;
 let num2;
@@ -34,6 +35,7 @@ document.addEventListener('click', (e) => {
       numberIsDisplayed = false;
       initialOperatorChosen = false;
       operatorJustPressed = false;
+      decimalJustPressed = false;
       equalsJustPressed = true;
       operatorStatus; 
       num1 = 0;
@@ -51,19 +53,30 @@ document.addEventListener('click', function (e){
     initialOperatorChosen = false;
     operatorJustPressed = false;
     equalsJustPressed = false;
+    decimalJustPressed = false;
   }  
 })
 
-// document.addEventListener('click', function (e){
-//   if(e.target.id === "decimal"){ 
-//     if (equalsJustPressed === "true") {
-//       calcDisplay.append(".");
-//     }else if (calcDisplay.textContent.includes(".") && operatorJustPressed == true) {
-//     } else {
-//       calcDisplay.append(".");
-//     }
-//   }
-// })
+document.addEventListener('click', function (e){
+  if(e.target.id === "decimal"){ 
+    if (calcDisplay.textContent.includes(".") && equalsJustPressed === false) {
+      //DO NOTHING
+    } else if (equalsJustPressed === true && equalsJustPressed === true) {
+        calcDisplay.innerText = "";
+        calcDisplay.append(".");
+        equalsJustPressed = false;
+    } else if (equalsJustPressed === true) {
+        calcDisplay.innerText = "";
+        calcDisplay.append(".");
+        decimalJustPressed = true;
+        equalsJustPressed = false;
+        console.log("decimal just pressed");
+    } else {
+        calcDisplay.append (".");
+        equalsJustPressed = false;
+    }
+  }
+})
 
 function calculate(e) {
   if (initialOperatorChosen == false && operatorJustPressed == false) {
