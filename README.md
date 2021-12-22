@@ -3,18 +3,18 @@
 ## Location  
 https://chadlinthicum.github.io/APPLICATION-6-CALCULATOR/
 
-Instructions  
+## Instructions  
 Open the git hub pages link or pull the repo down and open the index.html file. 
 
-Description  
+## Description  
 A simple calculator app written in vanilla JS. 
 
-Summary  
+## Summary  
 This app was written using functions, switch statements, if-then statements and passing elements to functions. 
 It also has memory functionality to store a number for later use. 
 
-Author: Chad Linthicum  
-Linked-In: www.linkedin.com/in/chad-a-linthicum
+## Author: Chad Linthicum  
+## Linked-In: www.linkedin.com/in/chad-a-linthicum
 
 
 
