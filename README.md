@@ -1,6 +1,6 @@
 # APPLICATION-6-CALCULATOR
 
-##Location##  
+##Location  
 https://chadlinthicum.github.io/APPLICATION-6-CALCULATOR/
 
 Instructions  
