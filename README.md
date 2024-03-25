@@ -3,7 +3,7 @@
 <br>
 <b>Description:</b> Number crunch with this calculator app!! <br>Includes continuous arithmic functionality and memory functionality!!<br>
 <br>
-View in your browser: </b><a href="https://chadlinthicum.github.io/APP_Calculator/">Here</a><br>
+View in your browser: </b><a href="https://chadlinthicum.github.io/APP-Calculator/">Here</a><br>
 <br>
 <b>Download: </b><a href="https://github.com/chadLinthicum/APP_Calculator_VanillaJS"> Here</a><br>
 <br>
